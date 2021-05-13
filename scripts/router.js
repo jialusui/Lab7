@@ -5,7 +5,29 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function() {
+router.setState = function(state) {
+
+  if (state == "home_page"){
+    var main_url = new URL("http://127.0.0.1:5500/index.html");
+    document.location.href = main_url;
+    history.pushState({page:'main'},'main',main_url);
+
+
+  }
+  if (state == "entry_page"){
+    
+  }
+  if (state == "setting"){
+    var setting_url = new URL("http://127.0.0.1:5500/#settings");
+    document.location.href = setting_url;
+    history.pushState({page:'setting'},'setting',setting_url);
+
+    document.querySelector('h1').innerHTML = "Settings";
+    document.querySelector("body").className = "settings"
+
+
+
+  }
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
