@@ -1,7 +1,9 @@
 // script.js
 //questions:
 // delete old one, add new one...
-//Maximum call stack size exceeded.
+//error: Maximum call stack size exceeded.
+// sw.js
+// url issue
 import { router } from './router.js'; // Router imported so you can use it to manipulate your SPA app here
 const setState = router.setState;
 

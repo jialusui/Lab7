@@ -34,7 +34,7 @@ if ('serviceWorker' in navigator) {
   });
   
   self.addEventListener('activate', event => {
-    await clients.claim();
+    event.waitUntil(clients.claim());
   });
 
   self.addEventListener('fetch', function(event) {
