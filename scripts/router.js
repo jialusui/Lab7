@@ -8,7 +8,8 @@ export const router = {};
 router.setState = function(state) {
 
   if (state == "home_page"){
-    var main_url = new URL("http://127.0.0.1:5500/index.html");
+    //var main_url = new URL("http://127.0.0.1:5500/index.html");
+    var main_url = new URL(location);
     document.location.href = main_url;
     history.pushState({page:'main'},'main',main_url);
 
@@ -18,7 +19,9 @@ router.setState = function(state) {
     
   }
   if (state == "setting"){
-    var setting_url = new URL("http://127.0.0.1:5500/#settings");
+    //var setting_url = new URL("http://127.0.0.1:5500/#settings");
+    var setting_url = new URL("https://jialusui.github.io/Lab7/#settings");
+    
     document.location.href = setting_url;
     history.pushState({page:'setting'},'setting',setting_url);
 

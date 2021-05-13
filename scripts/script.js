@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
           let my_ind = index;
           console.log(my_ind);
           // CODE HERE
-          var url_str = "http://127.0.0.1:5500/#entry" + newPost.id;
+          //var url_str = "http://127.0.0.1:5500/#entry" + newPost.id;
+          var url_str = "https://jialusui.github.io/Lab7/"+"#entry" + newPost.id;
           var entry_str = "entry"+newPost.id;
           var entry_url = new URL(url_str);
           document.location.href = entry_url;
