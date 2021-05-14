@@ -75,7 +75,9 @@ setting.addEventListener("click",() => {
 });
 const main_entry = document.querySelector("h1");
 main_entry.addEventListener('click',() =>{
-  setState('home_page');
+  if (location.href != "https://jialusui.github.io/Lab7/"){
+    setState('home_page');
+  }
 
 });
 
