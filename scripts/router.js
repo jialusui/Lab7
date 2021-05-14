@@ -18,7 +18,7 @@ router.setState = function(state) {
     
   if (state.startsWith("entry")){
     var id = state.substring(5)
-    var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + newPost.id;
+    var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + id;
     // document.location.href = entry_url; 
     history.pushState({page: state}, state, entry_url); 
     document.querySelector("body").className = "single-entry";
