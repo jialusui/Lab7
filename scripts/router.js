@@ -16,7 +16,7 @@ router.setState = function(state) {
 
   }
     
-  if (state.startsWith("entry")){
+  if (state.startsWith("entry")){ 
     var id = state.substring(5)
     var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + id;
     // document.location.href = entry_url; 
