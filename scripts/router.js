@@ -5,42 +5,49 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function(state) {
+router.setState = function(state,flag) {
 
   if (state == "home_page"){
     //var main_url = new URL("http://127.0.0.1:5500/index.html");
     //var main_url = location.href;
-    //document.body.classList.remove("settings");
-    //document.body.classList.remove("single-entry");
+    document.body.classList.remove("settings");
+    document.body.classList.remove("single-entry");
     document.location = "https://jialusui.github.io/Lab7/";
-    history.pushState({page:'main'},'main',"https://jialusui.github.io/Lab7/");
+    if (flag == false){
+      history.pushState({page:'main'},'main',"https://jialusui.github.io/Lab7/");
+    }
 
 
   }
     
   if (state.startsWith("entry")){ 
-    //document.body.classList.remove("settings");
+    document.body.classList.remove("settings");
     var id = state.substring(5)
-    //document.querySelector('entry-page').remove();
-    //let emptyP = document.createElement('entry-page');
-    //emptyP.entry = document.getElementById(id).entry;
-    //document.querySelector('body').appendChild(emptyP);
+    document.querySelector('entry-page').remove();
+    let emptyP = document.createElement('entry-page');
+    emptyP.entry = document.getElementById(id).entry;
+    document.querySelector('body').appendChild(emptyP);
+    
     var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + id;
     // document.location.href = entry_url; 
-    history.pushState({page: state}, state, entry_url); 
+    if (flag == false){
+      history.pushState({page: state}, state, entry_url); 
+    }
     document.querySelector("body").className = "single-entry";
     document.querySelector('h1').innerHTML = "Entry " + id;
-    document.querySelector("entry-page").entry = document.getElementById(id).entry;
+    //document.querySelector("entry-page").entry = document.getElementById(id).entry;
     
     
   }
   if (state == "setting"){
-    //document.body.classList.remove("single-entry");
+    document.body.classList.remove("single-entry");
     //var setting_url = new URL("http://127.0.0.1:5500/#settings");
     var setting_url = 'https://jialusui.github.io/Lab7/#settings';
     
     //document.location = setting_url;
-    history.pushState({page:'settings'},'settings',setting_url);
+    if (flag == false){
+      history.pushState({page:'settings'},'settings',setting_url);
+    }
 
     document.querySelector('h1').innerHTML = "Settings";
     document.querySelector("body").className = "settings"
