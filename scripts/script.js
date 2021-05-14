@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newPost.id = index;
         newPost.addEventListener('click',() =>{
           
-          setState("entry"+newPost.id);
+          setState("entry"+newPost.id,false);
           
 
           
@@ -50,17 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('popstate',() =>{
   console.log(location.href);
   if (location.href == "https://jialusui.github.io/Lab7/"){
-    setState("home_page");
+    setState("home_page",true);
   }
   if (location.href.startsWith('https://jialusui.github.io/Lab7/#entry')){
     let leng = 'https://jialusui.github.io/Lab7/#'.length;
     let start = leng;
     var substr = location.href.substring(start);
-    setState(substr);
+    setState(substr,true);
 
   }
   if (location.href == 'https://jialusui.github.io/Lab7/#settings'){
-    setState('setting');
+    setState('setting',true);
   }
 
 
@@ -69,14 +69,14 @@ window.addEventListener('popstate',() =>{
 //setting
 const setting = document.querySelector("img");
 setting.addEventListener("click",() => {
-  setState('setting');
+  setState('setting',false);
   
 
 });
 const main_entry = document.querySelector("h1");
 main_entry.addEventListener('click',() =>{
   if (location.href != "https://jialusui.github.io/Lab7/"){
-    setState('home_page');
+    setState('home_page',false);
   }
 
 });
