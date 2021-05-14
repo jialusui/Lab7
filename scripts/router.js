@@ -19,7 +19,7 @@ router.setState = function(state) {
   }
     
   if (state.startsWith("entry")){ 
-    document.querySelector('entry-page').remove();
+    
     document.body.classList.remove("settings");
     var id = state.substring(5)
     var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + id;
