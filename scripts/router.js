@@ -13,6 +13,7 @@ router.setState = function(state,flag) {
     document.body.classList.remove("settings");
     document.body.classList.remove("single-entry");
     document.location = "https://jialusui.github.io/Lab7/";
+    document.querySelector('h1').innerHTML = "Journal Entries"
     if (flag == false){
       history.pushState({page:'main'},'main',"https://jialusui.github.io/Lab7/");
     }
