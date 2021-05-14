@@ -5,17 +5,6 @@
 //   - One for activation ( check out MDN's clients.claim() for this step )
 //   - One for fetch requests
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js').then(function(registration) {
-        // Registration was successful
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      }, function(err) {
-        // registration failed :(
-        console.log('ServiceWorker registration failed: ', err);
-      });
-    });
-  }  
 
 
   var CACHE_NAME = 'my-site-cache-v1';
@@ -34,7 +23,7 @@ if ('serviceWorker' in navigator) {
   });
   
   self.addEventListener('activate', event => {
-    event.waitUntil(clients.claim());
+      event.waitUntil(clients.claim());
   });
 
   self.addEventListener('fetch', function(event) {
