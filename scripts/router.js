@@ -19,15 +19,18 @@ router.setState = function(state) {
   }
     
   if (state.startsWith("entry")){ 
-    
     document.body.classList.remove("settings");
     var id = state.substring(5)
+    document.querySelector('entry-page').remove();
+    let emptyP = document.createElement('entry-page');
+    emptyP.entry = document.getElementById(id).entry;
+    document.querySelector('body').appendChild(emptyP);
     var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + id;
     // document.location.href = entry_url; 
     history.pushState({page: state}, state, entry_url); 
     document.querySelector("body").className = "single-entry";
     document.querySelector('h1').innerHTML = "Entry " + id;
-    document.querySelector("entry-page").entry = document.getElementById(id).entry;
+    //document.querySelector("entry-page").entry = document.getElementById(id).entry;
     
     
   }
