@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch('https://cse110lab6.herokuapp.com/entries')
     .then(response => response.json())
     .then(entries => {
+      
       let index = 0;
       entries.forEach(entry => {
         index += 1;
@@ -33,19 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         newPost.id = index;
         newPost.addEventListener('click',() =>{
           
-          // unable to solve index issue
-          let my_ind = index;
+          setState("entry"+newPost.id);
           
-          // CODE HERE
-          //var url_str = "http://127.0.0.1:5500/#entry" + newPost.id;
-          var url_str = "https://jialusui.github.io/Lab7/"+"#entry" + newPost.id;
-          var entry_str = "entry"+newPost.id;
-          //var entry_url = new URL(url_str);
-          document.location = url_str;
-          history.pushState({page:entry_str},entry_str,url_str);
-          document.querySelector("body").className = "single-entry";
-          document.querySelector('h1').innerHTML = "Entry "+newPost.id;
-          document.querySelector("entry-page").entry = newPost.entry;
 
           
         });
@@ -58,9 +48,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // back
 window.addEventListener('popstate',() =>{
-  history.back();
-  var back_url = location;
-  document.location = back_url;
+  
+  if (location == "https://jialusui.github.io/Lab7/"){
+    setState("home_page");
+  }
+  if (location.startWith('https://jialusui.github.io/Lab7/#entry')){
+    let leng = 'https://jialusui.github.io/Lab7/#'.length;
+    let start = leng;
+    var substr = location.substring(start);
+    setState(substr);
+
+  }
+  if (locationn == 'https://jialusui.github.io/Lab7/#settings'){
+    setState('setting');
+  }
+
 
 });
 
