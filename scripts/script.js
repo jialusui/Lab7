@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // back
 window.addEventListener('popstate',() =>{
-  
+  console.log(location.href);
   if (location.href == "https://jialusui.github.io/Lab7/"){
     setState("home_page");
   }
