@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // back
 window.addEventListener('popstate',() =>{
+  history.back();
   var back_url = location;
   document.location = back_url;
 
