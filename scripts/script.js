@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // back
 window.addEventListener('popstate',() =>{
-  var back_url = new URL(location);
-  document.location.href = back_url;
+  var back_url = location;
+  document.location = back_url;
 
 });
 
