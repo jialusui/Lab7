@@ -35,7 +35,7 @@ router.setState = function(state) {
     
   }
   if (state == "setting"){
-    document.body.classList.remove("single-entry");
+    //document.body.classList.remove("single-entry");
     //var setting_url = new URL("http://127.0.0.1:5500/#settings");
     var setting_url = 'https://jialusui.github.io/Lab7/#settings';
     
