@@ -52,7 +52,7 @@ window.addEventListener('popstate',() =>{
   if (location == "https://jialusui.github.io/Lab7/"){
     setState("home_page");
   }
-  if (location.startWith('https://jialusui.github.io/Lab7/#entry')){
+  if (location.startsWith('https://jialusui.github.io/Lab7/#entry')){
     let leng = 'https://jialusui.github.io/Lab7/#'.length;
     let start = leng;
     var substr = location.substring(start);
