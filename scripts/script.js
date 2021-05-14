@@ -35,14 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
           
           // unable to solve index issue
           let my_ind = index;
-          console.log(my_ind);
+          
           // CODE HERE
           //var url_str = "http://127.0.0.1:5500/#entry" + newPost.id;
           var url_str = "https://jialusui.github.io/Lab7/"+"#entry" + newPost.id;
           var entry_str = "entry"+newPost.id;
-          var entry_url = new URL(url_str);
-          document.location.href = entry_url;
-          history.pushState({page:entry_str},entry_str,entry_url);
+          //var entry_url = new URL(url_str);
+          document.location = url_str;
+          history.pushState({page:entry_str},entry_str,url_str);
           document.querySelector("body").className = "single-entry";
           document.querySelector('h1').innerHTML = "Entry "+newPost.id;
           document.querySelector("entry-page").entry = newPost.entry;

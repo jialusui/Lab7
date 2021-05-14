@@ -20,10 +20,10 @@ router.setState = function(state) {
   }
   if (state == "setting"){
     //var setting_url = new URL("http://127.0.0.1:5500/#settings");
-    var setting_url = new URL("https://jialusui.github.io/Lab7/#settings");
+    var setting_url = 'https://jialusui.github.io/Lab7/#settings';
     
-    document.location.href = setting_url;
-    history.pushState({page:'setting'},'setting',setting_url);
+    document.location = setting_url;
+    history.pushState({page:'settings'},'settings',setting_url);
 
     document.querySelector('h1').innerHTML = "Settings";
     document.querySelector("body").className = "settings"
