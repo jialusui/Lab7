@@ -10,19 +10,28 @@ router.setState = function(state) {
   if (state == "home_page"){
     //var main_url = new URL("http://127.0.0.1:5500/index.html");
     var main_url = location;
-    document.location = main_url;
+    //document.location = main_url;
     history.pushState({page:'main'},'main',main_url);
 
 
   }
-  if (state == "entry_page"){
+    
+  if (state.startsWith("entry")){
+    var id = state.substring(5)
+    var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + newPost.id;
+    // document.location.href = entry_url; 
+    history.pushState({page: state}, state, entry_url); 
+    document.querySelector("body").className = "single-entry";
+    document.querySelector('h1').innerHTML = "Entry " + id;
+    document.querySelector("entry-page").entry = document.getElementById(id).entry;
+    
     
   }
   if (state == "setting"){
     //var setting_url = new URL("http://127.0.0.1:5500/#settings");
     var setting_url = 'https://jialusui.github.io/Lab7/#settings';
     
-    document.location = setting_url;
+    //document.location = setting_url;
     history.pushState({page:'settings'},'settings',setting_url);
 
     document.querySelector('h1').innerHTML = "Settings";
