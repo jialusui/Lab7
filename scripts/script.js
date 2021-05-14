@@ -49,17 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
 // back
 window.addEventListener('popstate',() =>{
   
-  if (location == "https://jialusui.github.io/Lab7/"){
+  if (location.href == "https://jialusui.github.io/Lab7/"){
     setState("home_page");
   }
-  if (location.startsWith('https://jialusui.github.io/Lab7/#entry')){
+  if (location.href.startsWith('https://jialusui.github.io/Lab7/#entry')){
     let leng = 'https://jialusui.github.io/Lab7/#'.length;
     let start = leng;
-    var substr = location.substring(start);
+    var substr = location.href.substring(start);
     setState(substr);
 
   }
-  if (locationn == 'https://jialusui.github.io/Lab7/#settings'){
+  if (location.href == 'https://jialusui.github.io/Lab7/#settings'){
     setState('setting');
   }
 

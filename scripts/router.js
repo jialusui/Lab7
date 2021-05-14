@@ -9,9 +9,9 @@ router.setState = function(state) {
 
   if (state == "home_page"){
     //var main_url = new URL("http://127.0.0.1:5500/index.html");
-    var main_url = location;
+    //var main_url = location.href;
     //document.location = main_url;
-    history.pushState({page:'main'},'main',main_url);
+    history.pushState({page:'main'},'main',"https://jialusui.github.io/Lab7/");
 
 
   }
