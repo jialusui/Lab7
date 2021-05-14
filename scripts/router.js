@@ -10,6 +10,8 @@ router.setState = function(state) {
   if (state == "home_page"){
     //var main_url = new URL("http://127.0.0.1:5500/index.html");
     //var main_url = location.href;
+    document.body.classList.remove("settings");
+    document.body.classList.remove("single-entry");
     document.location = "https://jialusui.github.io/Lab7/";
     history.pushState({page:'main'},'main',"https://jialusui.github.io/Lab7/");
 
@@ -17,6 +19,8 @@ router.setState = function(state) {
   }
     
   if (state.startsWith("entry")){ 
+    document.querySelector('entry-page').remove();
+    document.body.classList.remove("settings");
     var id = state.substring(5)
     var entry_url = "https://jialusui.github.io/Lab7/"+"#entry" + id;
     // document.location.href = entry_url; 
@@ -28,6 +32,7 @@ router.setState = function(state) {
     
   }
   if (state == "setting"){
+    document.body.classList.remove("single-entry");
     //var setting_url = new URL("http://127.0.0.1:5500/#settings");
     var setting_url = 'https://jialusui.github.io/Lab7/#settings';
     
