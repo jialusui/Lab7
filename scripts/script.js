@@ -1,83 +1,64 @@
-// script.js
-//questions:
-// delete old one, add new one...
-//error: Maximum call stack size exceeded.
-// sw.js
-// url issue
+ // script.js
+ 
 import { router } from './router.js'; // Router imported so you can use it to manipulate your SPA app here
 const setState = router.setState;
-
+ 
 // Make sure you register your service worker here too
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('./sw.js').then(function(registration) {
-      // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      // registration failed :(
-      console.log('ServiceWorker registration failed: ', err);
-    });
-  });
+ window.addEventListener('load', function() {
+   navigator.serviceWorker.register('./sw.js').then(function(registration) {
+     // Registration was successful
+     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+   }, function(err) {
+     // registration failed :(
+     console.log('ServiceWorker registration failed: ', err);
+   });
+ });
 }
-
-
+ 
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('https://cse110lab6.herokuapp.com/entries')
-    .then(response => response.json())
-    .then(entries => {
-      
-      let index = 0;
-      entries.forEach(entry => {
-        index += 1;
-        let newPost = document.createElement('journal-entry');
-        newPost.entry = entry;
-        newPost.id = index;
-        newPost.addEventListener('click',() =>{
-          
-          setState("entry"+newPost.id,false);
-          
-
-          
-        });
-        document.querySelector('main').appendChild(newPost);
-
-       
-      });
-    });
+ fetch('https://cse110lab6.herokuapp.com/entries')
+   .then(response => response.json())
+   .then(entries => {
+     let index = 0;
+     entries.forEach(entry => {
+       index += 1;
+       let newPost = document.createElement('journal-entry');
+       newPost.entry = entry;
+       newPost.id = index;
+       newPost.addEventListener('click',() => {
+         setState({page: "entry" + newPost.id}, false)
+       });
+       document.querySelector('main').appendChild(newPost);
+     });
+   });
 });
-
+ 
 // back
-window.addEventListener('popstate',() =>{
-  console.log(location.href);
-  if (location.href == "https://jialusui.github.io/Lab7/"){
-    setState("home_page",true);
-  }
-  if (location.href.startsWith('https://jialusui.github.io/Lab7/#entry')){
-    let leng = 'https://jialusui.github.io/Lab7/#'.length;
-    let start = leng;
-    var substr = location.href.substring(start);
-    setState(substr,true);
-
-  }
-  if (location.href == 'https://jialusui.github.io/Lab7/#settings'){
-    setState('setting',true);
-  }
-
-
+window.addEventListener('popstate', (event) => {
+ if (event.state == null) {
+   setState({page: 'home_page'}, true)
+ }
+ else {
+   setState(event.state, true)
+ }
+ 
 });
-
+ 
 //setting
-const setting = document.querySelector("img");
+const setting = document.querySelector("header img");
 setting.addEventListener("click",() => {
-  setState('setting',false);
-  
-
+ setState({page: 'settings'}, false);
 });
-const main_entry = document.querySelector("h1");
-main_entry.addEventListener('click',() =>{
-  if (location.href != "https://jialusui.github.io/Lab7/"){
-    setState('home_page',false);
-  }
-
+ 
+ 
+const header = document.querySelector("h1");
+header.addEventListener('click', () => {
+ // console.log(location.href)
+ // console.log(location.origin)
+ if (location.href != location.origin){
+   setState({page: 'home_page'}, false);
+ }
 });
+
 
